@@ -1,4 +1,5 @@
 import { Button } from '@headlessui/react'
+import PropTypes from 'prop-types';
 
 export default function MainButton({text, onClick}) {
   return (
@@ -29,3 +30,8 @@ export default function MainButton({text, onClick}) {
     </Button>
   )
 }
+
+MainButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

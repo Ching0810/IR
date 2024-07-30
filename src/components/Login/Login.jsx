@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputID from "../InputID";
 import InputPassword from "../InputPassword";
-import LoginButton from "../LoginButton";
+import ButtonPlayLogin from "../ButtonPlayLogin";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [memberID, setMemberID] = useState("");
 
   const handleHomeClick = () => {
     navigate('/');
@@ -67,10 +69,10 @@ const Login = () => {
             </div>
           </div>
           <div className="space-y-10">
-            <InputID />
+            <InputID value={memberID} onChange={setMemberID} />
             <InputPassword />
           </div>
-          <LoginButton />
+          <ButtonPlayLogin memberID={memberID} />
           <div className="text-center space-y-4 px-5 hidden md:block">
             <div className="text-2xl text-white font-medium">
               How to Play

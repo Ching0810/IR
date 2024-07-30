@@ -1,11 +1,9 @@
 import { Button } from '@headlessui/react';
-import { useNavigate } from 'react-router-dom';
 
-export default function LoginButton() {
-  const navigate = useNavigate();
+export default function ButtonSubmit() {
 
   const handleClick = () => {
-    navigate('/wallet/account');
+    console.log('!!!!!')
   };
 
   return (
@@ -32,7 +30,7 @@ export default function LoginButton() {
         data-[focus]:outline-white"
       onClick={handleClick}
     >
-      Login
+      Submit
     </Button>
   );
 }

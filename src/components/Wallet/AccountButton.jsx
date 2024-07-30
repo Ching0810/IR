@@ -1,16 +1,17 @@
 import { Button } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function LoginButton() {
+export default function AccountButton({ text, route, isActive }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/wallet/account');
+    navigate(route); // Navigate to the route provided
   };
 
   return (
     <Button
-      className="
+      className={`
         flex
         items-center
         justify-center
@@ -20,19 +21,26 @@ export default function LoginButton() {
         py-2
         px-3
         text-lg
-        w-full
+        w-1/3
         font-medium
         text-white 
         shadow-inner 
         shadow-white/10 
         focus:outline-none 
-        data-[hover]:bg-gray-600 
-        data-[open]:bg-gray-700 
+        ${isActive ? 'bg-fuchsia-800' : 'bg-buttonColor'}
+        data-[hover]:bg-fuchsia-600
         data-[focus]:outline-1 
-        data-[focus]:outline-white"
+        data-[focus]:outline-white
+      `}
       onClick={handleClick}
     >
-      Login
+      {text}
     </Button>
   );
 }
+
+AccountButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  route: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};

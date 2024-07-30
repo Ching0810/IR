@@ -1,10 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import InputID from "../InputID";
-import InputPassword from "../InputPassword";
-import LoginButton from "../LoginButton";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import AccountButton from "./AccountButton";
 
-const Wallet = () => {
+const Account = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [activeButton, setActiveButton] = useState(location.pathname);
+
+  useEffect(() => {
+    setActiveButton(location.pathname);
+  }, [location.pathname]);
 
   const handleHomeClick = () => {
     navigate('/');
@@ -35,42 +40,17 @@ const Wallet = () => {
                 We keep your funds in top-tier banks, and they’re fully segregated from our own.
               </div>
             </div>
-            <div className="flex-col text-center space-y-5 px-2 sm:px-5 hidden md:block">
-              <div className="text-xl sm:text-2xl text-white font-bold">
-                Play Anywhere, Anytime
-              </div>
-              <div className="text-sm sm:text-base text-white">
-                Available exclusively for Pearl, Jack Phoenix, and Dragon Patrons, you can now play live casino games online, anytime and anywhere within the Philippines. For the best playing experience, use Chrome.
-              </div>
+            <div className="flex flex-row text-center space-x-5 px-2 sm:px-5 md:flex">
+              <AccountButton text="Deposit" route="deposit" isActive={activeButton === "/wallet/account/deposit"} />
+              <AccountButton text="Withdraw" route="withdraw" isActive={activeButton === "/wallet/account/withdraw"} />
+              <AccountButton text="Balance" route="balance" isActive={activeButton === "/wallet/account/balance"} />
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full md:w-2/5 bg-black flex flex-col justify-center p-10 sm:px-16 space-y-10">
-        <div className="text-left space-y-6">
-          <div className="text-3xl text-white font-medium">
-            Sign in
-          </div>
-          <div className="text-base text-white">
-            If you don’t have an account, register
-          </div>
-          <div className="flex space-x-2">
-            <div className="text-base text-white">
-              You can
-            </div>
-            <div className="text-buttonColor">
-              Register here!
-            </div>
-          </div>
-        </div>
-        <div className="space-y-10">
-          <InputID />
-          <InputPassword />
-        </div>
-        <LoginButton />
-      </div>
+      <Outlet />
     </div>
   );
 };
 
-export default Wallet;
+export default Account;
