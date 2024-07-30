@@ -1,6 +1,6 @@
 import { Button } from '@headlessui/react'
 
-export default function MainButton({text}) {
+export default function MainButton({text, onClick}) {
   return (
     <Button className="
       flex
@@ -22,6 +22,7 @@ export default function MainButton({text}) {
       data-[open]:bg-gray-700 
       data-[focus]:outline-1 
       data-[focus]:outline-white"
+      onClick={onClick}
     >
       {text}
     </Button>
