@@ -3,9 +3,9 @@ import Home from '../components/Home/Home';
 import Login from '../components/Login/Login';
 import Wallet from '../components/Wallet/Wallet';
 import Account from '../components/Wallet/Account';
-import Deposit from '../components/Wallet/Deposit';  // New component for Deposit
-import Withdraw from '../components/Wallet/Withdraw'; // New component for Withdraw
-import Balance from '../components/Wallet/Balance';   // New component for Balance
+import Deposit from '../components/Wallet/Deposit';
+import Withdraw from '../components/Wallet/Withdraw';
+import Balance from '../components/Wallet/Balance';
 
 const AppRoutes = () => {
   return (

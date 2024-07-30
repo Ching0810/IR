@@ -1,6 +1,6 @@
 import ButtonSubmit from "../ButtonSubmit";
 import InputAmount from "../InputAmount";
-import InputMethod from "../InuptMethod";
+import InputMethod from "../InputMethod";
 
 
 const Deposit = () => {
